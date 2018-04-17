@@ -1,14 +1,15 @@
 var express = require("express");
-var router = new express.Router();
+var router = express.Router();
+const path = require("path");
 
-router.use("/films", require("./films"));
+router.use("/api/films", require("./films"));
 
 router.get("/", function(req, res) {
-  res.json({data: "Welcome"});
-})
+  res.sendFile(path.join(__dirname + "../client/build/index.html"));
+});
 
 router.get("/about", function(req, res) {
   res.json({data: "All about us!"});
-})
+});
 
 module.exports = router;
